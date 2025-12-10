@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Cangling-KnowFlow: Knowledge-and-Flow Agent for Remote Sensing</title>
+  <meta name="title" content="Cangling-KnowFlow: Knowledge-and-Flow Agent for Remote Sensing">
+  <meta name="description" content="Cangling-KnowFlow fuses an expert procedural knowledge base, dynamic workflow adjustment, and evolutionary memory to deliver reliable remote sensing agents across 162 tasks and 1,008 workflows.">
+  <meta name="keywords" content="Cangling-KnowFlow, remote sensing agent, workflow automation, procedural knowledge base, dynamic workflow adjustment, evolutionary memory, KnowFlow-Bench, Earth observation, LLM agent">
+  <meta name="author" content="Zhengchao Chen, Haoran Wang, Jing Yao, Pedram Ghamisi, Jun Zhou, Peter M. Atkinson, Bing Zhang">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  <meta name="theme-color" content="#0ea5e9">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="CangLingBrain">
+  <meta property="og:title" content="Cangling-KnowFlow: Knowledge-and-Flow Agent for Remote Sensing">
+  <meta property="og:description" content="A unified knowledge-and-flow-fused agent with a 1,008-case procedural knowledge base, dynamic workflow adjustment, and evolutionary memory for robust RS automation.">
+  <meta property="og:url" content="https://your-domain.com/cangling-knowflow">
+  <meta property="og:image" content="figures/cangling_1.png">
+  <meta property="og:image:alt" content="Cangling-KnowFlow project preview">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cangling-KnowFlow: Knowledge-and-Flow Agent for Remote Sensing">
+  <meta name="twitter:description" content="Knowledge-and-flow-fused RS agent with PKB, dynamic adjustment, and evolutionary memory; validated on 324 workflows across 13 LLMs.">
+  <meta name="twitter:image" content="figures/cangling_1.png">
+
+  <meta name="citation_title" content="Cangling-KnowFlow: A Unified Knowledge-and-Flow-fused Agent for Comprehensive Remote Sensing Applications">
+  <meta name="citation_author" content="Chen, Zhengchao">
+  <meta name="citation_author" content="Wang, Haoran">
+  <meta name="citation_author" content="Yao, Jing">
+  <meta name="citation_author" content="Ghamisi, Pedram">
+  <meta name="citation_author" content="Zhou, Jun">
+  <meta name="citation_author" content="Atkinson, Peter M.">
+  <meta name="citation_author" content="Zhang, Bing">
+  <meta name="citation_publication_date" content="2024">
+  <meta name="citation_pdf_url" content="static/pdfs/sample.pdf">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+
+  <style>
+    :root {
+      --paper: #f2f0e5;
+      --ink: #0f2438;
+      --accent: #c4a464;
+      --accent-light: #e7dbb9;
+      --muted: #505050;
+    }
+
+    body {
+      background: #ffffff;
+      color: var(--ink);
+    }
+
+    .cf-hero-area {
+      background: var(--paper);
+    }
+
+    .cf-hero-wrapper {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 100px 40px 20px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      align-items: center;
+    }
+
+    @media (min-width: 1024px) {
+      .cf-hero-wrapper { grid-template-columns: 1.1fr 0.9fr; }
+    }
+
+    .cf-hero-title {
+      font-size: clamp(2rem, 2.7vw, 2.6rem);
+      font-weight: 700;
+      font-style: italic;
+      margin: 0 0 6px;
+      font-family: "Times New Roman", Georgia, serif;
+    }
+
+    .cf-hero-subtitle {
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      margin: 0 0 16px;
+      font-weight: 600;
+      font-family: "Times New Roman", Georgia, serif;
+    }
+
+    .cf-points { display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; }
+    .cf-point { display: grid; grid-template-columns: 22px 1fr; column-gap: 10px; align-items: start; line-height: 1.5; color: var(--muted); font-size: 0.98rem; }
+    .cf-point i { color: var(--ink); margin-top: 2px; }
+    .cf-point strong { color: var(--ink); }
+
+    .cf-cta-group { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px; }
+    .cf-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: var(--accent-light);
+      color: #2d2a22;
+      border: 1px solid rgba(0,0,0,0.08);
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+    .cf-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 14px rgba(0,0,0,0.12); }
+    .cf-cta.disabled { opacity: 0.65; cursor: not-allowed; }
+
+    .cf-hero-image img {
+      width: 420px;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      max-height: 420px;
+      margin: 0 auto;
+    }
+
+    .cf-authors {
+      max-width: 1100px;
+      margin: 10px auto 2px;
+      padding: 0 32px 8px;
+      text-align: center;
+      color: var(--ink);
+      font-family: "Times New Roman", Georgia, serif;
+      line-height: 1.8;
+    }
+    .cf-authors hr {
+      border: none;
+      border-top: 1px solid rgba(0,0,0,0.15);
+      margin: 12px auto 6px;
+      width: 60%;
+    }
+
+    .more-works-container {
+      margin: 4px 0 8px;
+    }
+    .cf-authors .names { font-size: 1.05rem; }
+    .cf-authors .aff { color: #555; font-size: 0.98rem; }
+    .cf-authors .notes { color: #777; font-size: 0.95rem; margin-top: 6px; }
+
+    /* Recolor UI controls to match hero palette */
+    .bulma-carousel .carousel-pagination .dot,
+    .carousel .carousel-pagination .dot,
+    .slider-pagination .dot {
+      background: #e7dbb9 !important;
+      border: 1px solid rgba(0,0,0,0.1) !important;
+    }
+    .bulma-carousel .carousel-pagination .dot.is-active,
+    .carousel .carousel-pagination .dot.is-active,
+    .slider-pagination .dot.is-active {
+      box-shadow: 0 0 0 2px rgba(0,0,0,0.08);
+      background: #c4a464 !important;
+    }
+
+    .copy-btn,
+    button.copy-bibtex,
+    button.copy-button {
+      background: #e7dbb9 !important;
+      border: 1px solid rgba(0,0,0,0.1) !important;
+      color: #0f2438 !important;
+    }
+
+    .scroll-to-top {
+      background: #e7dbb9 !important;
+      color: #0f2438 !important;
+      border: 1px solid rgba(0,0,0,0.1) !important;
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Cangling-KnowFlow: A Unified Knowledge-and-Flow-fused Agent for Comprehensive Remote Sensing Applications",
+    "description": "Cangling-KnowFlow fuses an expert procedural knowledge base, dynamic workflow adjustment, and evolutionary memory to deliver reliable remote sensing agents across 162 tasks and 1,008 workflows.",
+    "author": [
+      {"@type": "Person","name": "Zhengchao Chen"},
+      {"@type": "Person","name": "Haoran Wang"},
+      {"@type": "Person","name": "Jing Yao"},
+      {"@type": "Person","name": "Pedram Ghamisi"},
+      {"@type": "Person","name": "Jun Zhou"},
+      {"@type": "Person","name": "Peter M. Atkinson"},
+      {"@type": "Person","name": "Bing Zhang"}
+    ],
+    "datePublished": "2025-12-09",
+    "url": "https://your-domain.com/cangling-knowflow",
+    "image": "figures/cangling_1.png",
+    "keywords": ["remote sensing agent", "procedural knowledge base", "workflow automation", "dynamic adjustment", "evolutionary memory", "KnowFlow-Bench"],
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+  }
+  </script>
+</head>
+<body>
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <div class="cf-hero-area">
+    <section class="cf-hero-wrapper">
+      <div>
+        <h1 class="cf-hero-title"><i>KnowFlow</i></h1>
+        <h2 class="cf-hero-subtitle"> A Unified Knowledge-and-Flow-fused Agent for Comprehensive Remote Sensing Applications</h2>
+
+        <div class="cf-points">
+          <div class="cf-point"><i class="fas fa-book-open"></i><div><strong>Procedural Knowledge Base:</strong> 1,008 curated workflows and action graphs to ground remote-sensing agents.</div></div>
+          <div class="cf-point"><i class="fas fa-chevron-up"></i><div><strong>Dynamic Workflow Adjustment:</strong> Adaptive re-planning that aligns tools, data sources, and constraints per task.</div></div>
+          <div class="cf-point"><i class="fas fa-brain"></i><div><strong>Evolutionary Memory:</strong> Iterative refinement using feedback signals to stabilize long-horizon executions.</div></div>
+          <div class="cf-point"><i class="fas fa-clipboard-check"></i><div><strong>KnowFlow-Bench:</strong> Comprehensive evaluation across 162 tasks and 324 groundtruth workflows for reliability.</div></div>
+          <div class="cf-point"><i class="fas fa-globe"></i><div><strong>Earth Observation Ready:</strong> Built for satellite imagery, geospatial tools, and real-world decision pipelines.</div></div>
+        </div>
+
+        <div class="cf-cta-group">
+          <a class="cf-cta" href="https://arxiv.org/abs/2501.00000" target="_blank" rel="noopener">
+            <i class="ai ai-arxiv"></i><span>arXiv</span>
+          </a>
+          <a class="cf-cta disabled" aria-disabled="true">
+            <i class="fa-solid fa-file-lines"></i><span>Paper (coming soon)</span>
+          </a>
+        </div>
+      </div>
+      <div class="cf-hero-image">
+        <img src="static/images/KnowFlow_Head.png" alt="KnowFlow Overview" loading="lazy">
+      </div>
+    </section>
+  </div>
+
+  <section class="cf-authors">
+    <hr>
+    <div class="names">
+      Zhengchao Chen<sup>1</sup>, Haoran Wang<sup>1,2</sup>, Jing Yao<sup>1</sup>, Pedram Ghamisi<sup>3,4</sup>, Jun Zhou<sup>5</sup>, Peter M. Atkinson<sup>4</sup>, Bing Zhang<sup>1</sup>
+    </div>
+    <div class="aff">
+      1. State Key Laboratory of Remote Sensing and Digital Earth, AIRCAS, Beijing, China<br>
+      2. University of Chinese Academy of Sciences, Beijing, China<br>
+      3. Helmholtz-Zentrum Dresden-Rossendorf, Freiberg, Germany<br>
+      4. Faculty of Science and Technology, Lancaster University, UK<br>
+      5. School of Information and Communication Technology, Griffith University, Australia
+    </div>
+  </section>
+
+  <div class="more-works-container">
+    <button class="more-works-btn" onclick="toggleMoreWorks()" title="Related works">
+      <i class="fas fa-flask"></i>
+      Related
+      <i class="fas fa-chevron-down dropdown-arrow"></i>
+    </button>
+    <div class="more-works-dropdown" id="moreWorksDropdown">
+      <div class="dropdown-header">
+        <h4>Related agentic workflows</h4>
+        <button class="close-btn" onclick="toggleMoreWorks()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="works-list">
+        <a href="https://arxiv.org/abs/2301.11325" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>ReAct</h5>
+            <p>Reasoning-and-acting backbone for tool-augmented agents.</p>
+            <span class="work-venue">ICLR 2023</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://arxiv.org/abs/2303.11366" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Reflexion</h5>
+            <p>Self-reflective agents with iterative improvement loops.</p>
+            <span class="work-venue">NeurIPS 2023</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://doi.org/10.48550/arXiv.2509.23141" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Earth-Agent</h5>
+            <p>Earth-Agent: Unlocking the Full Landscape of Earth Observation with Agents.</p>
+            <span class="work-venue">arXiv 2509.23141</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://doi.org/10.48550/arXiv.2511.17198" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>EarthAgent</h5>
+            <p>Designing Domain-Specific Agents via Hierarchical Task Abstraction Mechanism.</p>
+            <span class="work-venue">arXiv 2511.17198</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content">
+
+    <section class="hero teaser" id="intention">
+      <div class="container is-max-desktop">
+        <div class="hero-body">
+          <img src="static/images/research_intention.png" alt="Research intention" loading="lazy">
+          <h2 class="subtitle has-text-centered">
+            Research intention: anchor on knowledge-driven workflow templates, pair with dynamic adjustment and evolutionary memory to build verifiable, recoverable, and evolving remote sensing agents (architectures of a: existing agents and b: our proposed Cangling-KnowFlow).
+          </h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="section hero is-light" id="abstract">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                The automated and intelligent processing of massive remote sensing (RS) datasets is critical in Earth observation (EO). Existing automated systems are normally task-specific, lacking a unified framework to manage diverse, end-to-end workflows--from data preprocessing to advanced interpretation--across diverse RS applications. To address this gap, this paper introduces Cangling-KnowFlow, a unified intelligent agent framework that integrates a Procedural Knowledge Base (PKB), Dynamic Workflow Adjustment, and an Evolutionary Memory Module. The PKB, comprising 1,008 expert-validated workflow cases across 162 practical RS tasks, guides planning and substantially reduces hallucinations common in general-purpose agents. During runtime failures, the Dynamic Workflow Adjustment autonomously diagnoses and replans recovery strategies, while the Evolutionary Memory Module continuously learns from these events, iteratively enhancing the agent’s knowledge and performance.
+                We evaluated Cangling-KnowFlow on the KnowFlow-Bench, a novel benchmark of 324 workflows inspired by real-world applications, testing its performance across 13 top LLM backbones from open-source to commercial. Across all complex tasks, Cangling-KnowFlow surpassed the Reflexion baseline by at least 4% in Task Success Rate. As the first comprehensive validation along this emerging field, this work demonstrates the great potential of Cangling-KnowFlow as a robust, efficient, and scalable automated solution for complex EO challenges by leveraging expert knowledge (Knowledge) into adaptive and verifiable procedures (Flow).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero is-small">
+      <div class="hero-body">
+        <div class="container">
+          <div class="card image-card">
+            <img src="static/images/framework.png" alt="Framework" loading="lazy">
+            <h2 class="subtitle has-text-centered">Framework: Orchestrator Agent + Procedural Knowledge Base + Dynamic Execution Engine + Evolutionary Memory Module.</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero is-small is-light" id="method">
+      <div class="hero-body">
+        <div class="container">
+          <h2 class="title is-3">Method</h2>
+          <div id="results-carousel" class="carousel results-carousel">
+            <div class="item">
+              <img src="static/images/workflow_tools.png" alt="Workflow tools" loading="lazy"/>
+              <h2 class="subtitle has-text-centered">Workflow Tools: curated tool library, workflow templates, and parameterized Directed Acyclic Graphs.</h2>
+            </div>
+            <div class="item">
+              <img src="static/images/adjustment.png" alt="Dynamic adjustment" loading="lazy"/>
+              <h2 class="subtitle has-text-centered">Dynamic Adjustment: runtime monitoring, failure detection, and graph-level repair to keep long-horizon execution on track.</h2>
+            </div>
+            <div class="item">
+              <img src="static/images/task_support.png" alt="Task support" loading="lazy"/>
+              <h2 class="subtitle has-text-centered">Task Support: 162 simple & complex tasks for diverse Earth observation scenarios.</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero is-small is-light" id="results">
+      <div class="hero-body">
+        <div class="container">
+          <h2 class="title is-3">Results</h2>
+          <div id="results-carousel" class="carousel results-carousel">
+            <div class="item">
+              <img src="static/images/result_table1.png" alt="KnowFlow-Bench results" loading="lazy"/>
+              <h2 class="subtitle has-text-centered">KnowFlow-Bench: across 13 LLMs, Cangling-KnowFlow boosts Task Success Rate/First-Pass Accuracy and cuts Number of Tool Calls by ~38% on complex remote sensing tasks.</h2>
+            </div>
+            <div class="item">
+              <img src="static/images/result_table2.png" alt="ThinkGeo generalization" loading="lazy"/>
+              <h2 class="subtitle has-text-centered">Transfer on ThinkGeo benchmark: significantly outperforms SOTA agents, showing cross-toolset adaptability.</h2>
+            </div>
+            <div class="item">
+              <img src="static/images/result_table3.png" alt="Ablation study" loading="lazy"/>
+              <h2 class="subtitle has-text-centered">Ablation: Workflow Library is the largest contributor; Dynamic Adjustment and Learning Capability add robustness and evolution.</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <div class="bibtex-header">
+          <h2 class="title">BibTeX</h2>
+          <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+            <i class="fas fa-copy"></i>
+            <span class="copy-text">Copy</span>
+          </button>
+        </div>
+<pre id="bibtex-code"><code>@article{CanglingKnowFlow2025,
+  title={Cangling-KnowFlow: A Unified Knowledge-and-Flow-fused Agent for Comprehensive Remote Sensing Applications},
+  author={Chen, Zhengchao and Wang, Haoran and Yao, Jing and Ghamisi, Pedram and Zhou, Jun and Atkinson, Peter M. and Zhang, Bing},
+  journal={arxiv},
+  year={2025},
+  note={comming soon},
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              Cangling-KnowFlow blends expert procedural knowledge, dynamic workflow repair, and evolutionary memory to deliver reliable remote sensing automation. Benchmarks and assets are provided for the community to reproduce and extend the work.
+            </p>
+            <p class="small">
+              Built from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> (adapted from <a href="https://nerfies.github.io" target="_blank">Nerfies</a>). Licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
