@@ -349,6 +349,31 @@
         background-color: var(--color-coral);
     }
 
+    .simcraft-feature {
+        background: #e5ece7;
+    }
+
+    .simcraft-feature img {
+        height: 52%;
+        width: calc(100% - 32px);
+        left: 16px;
+        top: 16px;
+        object-fit: contain;
+        background: white;
+        border-radius: 6px;
+    }
+
+    .simcraft-feature .featured-title {
+        color: #162a35;
+        text-shadow: none !important;
+    }
+
+    .simcraft-feature .feature-venue {
+        color: #485b50;
+        font-size: 0.75rem;
+        letter-spacing: 0.04em;
+    }
+
     /* Article card layout classes */
     .article-container {
         padding: 1.5rem;
@@ -486,10 +511,11 @@
                         <h3 class="featured-title">KnowFlow</h3>
                     </div>
                 </a>
-                <a href="#" class="featured-card md:col-span-3 bg-cloud-light">
-                    <img src="https://placehold.co/400x400/d1cfc5/ffffff?text=FlowAgent" alt="FlowAgent" onerror="this.onerror=null; this.src='https://placehold.co/400x400/d1cfc5/ffffff?text=FlowAgent';">
+                <a href="SimCRAFT/" class="featured-card md:col-span-3 simcraft-feature">
+                    <img src="SimCRAFT/assets/framework.png" alt="SimCRAFT: synthetic trajectories and contextual retrieval-augmented fine-tuning">
                     <div class="text-container">
-                        <h3 class="featured-title">FlowAgent</h3>
+                        <span class="feature-venue">EMNLP 2026 · Main Conference</span>
+                        <h3 class="featured-title">SimCRAFT</h3>
                     </div>
                 </a>
             </div>
@@ -514,6 +540,39 @@
                 </div>
 
                 <div class="article-list mt-6 space-y-0">
+
+                    <article data-category="publication" data-title="simcraft emnlp 2026 main remote sensing distillation arxiv 2608.30277">
+                        <a href="SimCRAFT/" class="publication-card block">
+                            <div class="article-container">
+                                <div class="article-category"><span class="category-label">Publication</span></div>
+                                <div class="article-title-cell"><h3 class="article-title">SimCRAFT: Distilling Remote Sensing Agents via Synthetic Trajectories and Contextual Retrieval-Augmented Fine-Tuning</h3></div>
+                                <div class="article-date"><span class="date-label">EMNLP 2026 Main</span></div>
+                                <div class="article-description"><p class="article-desc">Haoran Wang, Jing Yao, Xu Yang, Zeqing Wang, Yang Zhang, Pedram Ghamisi, Zhengchao Chen. Compact remote sensing agents trained with synthetic experience and retrieved procedural knowledge.</p></div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article data-category="dataset" data-title="simrs 14k simcraft synthetic trajectories">
+                        <a href="SimCRAFT/#dataset" class="publication-card block">
+                            <div class="article-container">
+                                <div class="article-category"><span class="category-label">Dataset</span></div>
+                                <div class="article-title-cell"><h3 class="article-title">SimRS-14k</h3></div>
+                                <div class="article-date"><span class="date-label">2026</span></div>
+                                <div class="article-description"><p class="article-desc">14,003 constraint-validated remote sensing tool-use trajectories. Explore the synthesis pipeline and experimental split.</p></div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article data-category="code" data-title="simcraft code">
+                        <a href="https://github.com/WangHrYii/SimCRAFT" target="_blank" rel="noopener noreferrer" class="publication-card block">
+                            <div class="article-container">
+                                <div class="article-category"><span class="category-label">Code</span></div>
+                                <div class="article-title-cell"><h3 class="article-title">SimCRAFT Code</h3></div>
+                                <div class="article-date"><span class="date-label">2026</span></div>
+                                <div class="article-description"><p class="article-desc">Source repository for SimCRAFT remote sensing agent research.</p></div>
+                            </div>
+                        </a>
+                    </article>
 
                     <article data-category="publication" data-title="knowflow arxiv 2512.15231">
                         <a href="https://arxiv.org/abs/2512.15231" target="_blank" class="publication-card block">

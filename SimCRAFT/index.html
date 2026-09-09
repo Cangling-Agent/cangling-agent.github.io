@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SimCRAFT | EMNLP 2026 Main</title>
+  <meta name="description" content="SimCRAFT distills remote sensing workflow planning into compact language models through synthetic trajectories and contextual retrieval-augmented fine-tuning. Accepted to EMNLP 2026 Main Conference.">
+  <link rel="canonical" href="https://cangling-agent.github.io/SimCRAFT/">
+  <link rel="icon" href="../imgs/favicon.png">
+  <meta name="theme-color" content="#faf9f5">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="CangLing-Agent">
+  <meta property="og:title" content="SimCRAFT | EMNLP 2026 Main">
+  <meta property="og:description" content="Teaching compact language models to plan remote sensing workflows with synthetic trajectories and procedural knowledge.">
+  <meta property="og:url" content="https://cangling-agent.github.io/SimCRAFT/">
+  <meta property="og:image" content="https://cangling-agent.github.io/SimCRAFT/assets/framework.png">
+  <meta property="og:image:alt" content="The two phases of SimCRAFT: multi-agent data synthesis and contextual retrieval-augmented fine-tuning.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SimCRAFT | EMNLP 2026 Main">
+  <meta name="twitter:description" content="Synthetic trajectories and contextual retrieval-augmented fine-tuning for compact remote sensing agents.">
+  <meta name="twitter:image" content="https://cangling-agent.github.io/SimCRAFT/assets/framework.png">
+  <meta name="citation_title" content="SimCRAFT: Distilling Remote Sensing Agents via Synthetic Trajectories and Contextual Retrieval-Augmented Fine-Tuning">
+  <meta name="citation_author" content="Wang, Haoran">
+  <meta name="citation_author" content="Yao, Jing">
+  <meta name="citation_author" content="Yang, Xu">
+  <meta name="citation_author" content="Wang, Zeqing">
+  <meta name="citation_author" content="Zhang, Yang">
+  <meta name="citation_author" content="Ghamisi, Pedram">
+  <meta name="citation_author" content="Chen, Zhengchao">
+  <meta name="citation_conference_title" content="EMNLP 2026 (Main Conference)">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_arxiv_id" content="2608.30277">
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2608.30277">
+  <script>
+    try {
+      const saved = localStorage.getItem('theme');
+      document.documentElement.dataset.theme = saved === 'dark' || saved === 'light'
+        ? saved : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    } catch (_) {}
+  </script>
+  <link rel="stylesheet" href="style.css">
+  <script src="page.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="../">CangLing-Agent <span>/ Research</span></a>
+    <nav aria-label="Page navigation">
+      <a href="#method">Method</a>
+      <a href="#results">Results</a>
+      <a href="#citation">Cite</a>
+      <button id="theme-toggle" type="button" aria-label="Toggle color theme" hidden>Dark mode</button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="paper-title">
+      <div class="hero-topline"><span class="venue">EMNLP 2026 · Main Conference</span><span class="research-label">Remote sensing × Language agents</span></div>
+      <p class="wordmark" aria-hidden="true">Sim<span>CRAFT</span><span class="wordmark-dot">.</span></p>
+      <h1 id="paper-title"><span class="sr-only">SimCRAFT: </span>Distilling Remote Sensing Agents via Synthetic Trajectories and Contextual Retrieval-Augmented Fine-Tuning</h1>
+      <p class="hero-summary">Teach a compact language model to turn a remote sensing request into a reliable sequence of tool calls, using synthetic experience and retrieved procedural knowledge.</p>
+      <div class="authors" aria-label="Authors in publication order">
+        <span><a href="https://wanghryii.github.io/">Haoran Wang</a><sup>1,2</sup></span>
+        <span>Jing Yao<sup>1,*</sup></span>
+        <span>Xu Yang<sup>1,2</sup></span>
+        <span>Zeqing Wang<sup>1,2</sup></span>
+        <span>Yang Zhang<sup>3</sup></span>
+        <span>Pedram Ghamisi<sup>4</sup></span>
+        <span>Zhengchao Chen<sup>1</sup></span>
+      </div>
+      <div class="affiliations">
+        <p><sup>1</sup> State Key Laboratory of Remote Sensing and Digital Earth, Aerospace Information Research Institute, Chinese Academy of Sciences</p>
+        <p><sup>2</sup> University of Chinese Academy of Sciences <span class="aff-separator">·</span> <sup>3</sup> The Hong Kong University of Science and Technology (Guangzhou)</p>
+        <p><sup>4</sup> Helmholtz-Zentrum Dresden-Rossendorf <span class="aff-separator">·</span> <sup>*</sup> Corresponding author</p>
+      </div>
+      <div class="resource-links">
+        <a class="button primary" href="https://arxiv.org/abs/2608.30277" target="_blank" rel="noopener noreferrer">Paper on arXiv <span aria-hidden="true">↗</span></a>
+        <a class="button" href="https://arxiv.org/pdf/2608.30277" target="_blank" rel="noopener noreferrer">PDF <span aria-hidden="true">↗</span></a>
+        <a class="button" href="https://github.com/WangHrYii/SimCRAFT" target="_blank" rel="noopener noreferrer">Code on GitHub <span aria-hidden="true">↗</span></a>
+        <a class="text-link" href="#citation">BibTeX <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <dl class="metrics" aria-label="Results for SimCRAFT-Qwen2.5-7B on the SimRS-14k test split">
+      <div><dt>Primary backbone</dt><dd>7<span>B</span></dd><dd class="metric-detail">Qwen2.5-7B</dd></div>
+      <div><dt>Validated trajectories</dt><dd>14,003</dd><dd class="metric-detail">SimRS-14k corpus</dd></div>
+      <div><dt>Planning success</dt><dd>83.2<span>%</span></dd><dd class="metric-detail">500 held-out tasks</dd></div>
+      <div><dt>Hallucination rate</dt><dd>0.5<span>%</span></dd><dd class="metric-detail">Tools and file paths</dd></div>
+    </dl>
+
+    <section class="section overview" aria-labelledby="overview-title">
+      <div class="section-heading"><p class="eyebrow">01 / The idea</p><h2 id="overview-title">Small models.<br> Structured experience.</h2></div>
+      <div class="prose">
+        <p>Remote sensing analysis often requires a chain of specialized operations: finding imagery, preprocessing it, selecting compatible tools, and passing the correct outputs from one step to the next. Large general-purpose language models can orchestrate these workflows, but their deployment can be costly.</p>
+        <p>SimCRAFT brings this planning ability to compact language models in two phases. A multi-agent synthesis pipeline creates constraint-validated tool-use trajectories. Contextual Retrieval-Augmented Fine-Tuning (CRAFT) then trains a model to adapt retrieved Standard Operating Procedures (SOPs) to a new request, including when the retrieved context contains irrelevant examples or incorrect parameters.</p>
+        <p>The result is a 7B-scale planner that improves tool selection and argument accuracy while reducing hallucinated tools and paths. We evaluate it on SimRS-14k and two additional benchmarks, KnowFlow-Bench and ThinkGeo.</p>
+      </div>
+    </section>
+
+    <section class="section" id="method" aria-labelledby="method-title">
+      <div class="section-heading horizontal"><div><p class="eyebrow">02 / How it works</p><h2 id="method-title">Synthesize experience. Learn to adapt.</h2></div><p class="section-aside">Two phases, one compact planner.</p></div>
+      <figure class="paper-figure">
+        <a class="figure-link" href="assets/framework.png" target="_blank" rel="noopener noreferrer" aria-label="Open the SimCRAFT framework figure at full size">
+          <img src="assets/framework.png" width="2400" height="845" alt="Phase I expands seed tasks through multi-agent synthesis and mock validation. Phase II fine-tunes a language model using retrieved and perturbed SOPs." fetchpriority="high">
+        </a>
+        <figcaption>Framework overview from the paper. Phase I constructs SimRS-14k; Phase II combines trajectory supervision with retrieved procedural context. Select the figure to view it at full size.</figcaption>
+      </figure>
+      <div class="method-columns">
+        <article><p class="eyebrow">Phase I</p><h3>Multi-agent data synthesis</h3><p>Starting from 162 expert seed tasks, the pipeline simulates both novice users who need clarification and experts who provide complete requests. Planning, execution, reflection, and summary agents generate multi-step tool-use trajectories over 36 remote sensing tools.</p><p>A Mock Execution Engine checks argument schemas, inter-tool dependencies, and sensor/tool compatibility. Recoverable error injection adds opportunities to learn correction and replanning.</p></article>
+        <article><p class="eyebrow">Phase II</p><h3>Contextual retrieval-augmented fine-tuning</h3><p>A frozen retriever supplies relevant SOPs from a Procedural Knowledge Base. During training, irrelevant context injection and parameter mutation perturb these references while the target trajectory remains correct.</p><p>This teaches the model to transfer useful workflow structure and recompute query-specific details. At inference, it retrieves SOPs without training-time perturbations and generates the tool-call sequence.</p></article>
+      </div>
+    </section>
+
+    <section class="section dataset-section" id="dataset" aria-labelledby="dataset-title">
+      <div class="section-heading"><p class="eyebrow">03 / SimRS-14k</p><h2 id="dataset-title">From seed tasks<br> to tool-use trajectories.</h2></div>
+      <div class="prose"><p>The synthesis pipeline retains 14,003 trajectories from 16,200 candidates after constraint validation, a 13.6% rejection rate. The experimental split uses 13,503 training trajectories and 500 held-out test trajectories.</p><p>Four remote sensing experts inspect a stratified sample of 2,800 trajectories; 2,787 pass the stated workflow and query-answering checks. The 13 flagged examples remain as low-rate residual noise.</p></div>
+      <figure class="paper-figure full-width">
+        <a class="figure-link" href="assets/synthesis.png" target="_blank" rel="noopener noreferrer" aria-label="Open the trajectory synthesis figure at full size"><img src="assets/synthesis.png" width="1725" height="2200" alt="Dual-mode user simulation and multi-agent trajectory synthesis with a Mock Execution Engine." loading="lazy" decoding="async"></a>
+        <figcaption>The data synthesis pipeline. Mock validation checks planning constraints; it does not replace execution of the full geospatial processing stack.</figcaption>
+      </figure>
+    </section>
+
+    <section class="section" id="results" aria-labelledby="results-title">
+      <div class="section-heading horizontal"><div><p class="eyebrow">04 / Evaluation</p><h2 id="results-title">Competitive planning at 7B scale.</h2></div><p class="section-aside">All scores below are percentages.</p></div>
+      <p class="results-intro">On the SimRS-14k test split, SimCRAFT-Qwen2.5-7B reaches 83.2% planning success, compared with 46.2% for the base Qwen-2.5-7B-Instruct model. The 95% bootstrap confidence interval is [80.6, 85.7]. Larger specialized RS agents retain a planning-success advantage, while SimCRAFT improves tool selection and argument accuracy.</p>
+      <nav class="result-tabs" aria-label="Evaluation benchmarks">
+        <a class="result-tab" href="#simrs-results">SimRS-14k</a>
+        <a class="result-tab" href="#knowflow-results">KnowFlow-Bench</a>
+        <a class="result-tab" href="#thinkgeo-results">ThinkGeo</a>
+      </nav>
+      <section class="result-panel" id="simrs-results" aria-labelledby="simrs-heading">
+        <h3 id="simrs-heading">SimRS-14k · 500 held-out trajectories</h3>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="SimRS-14k results table, scroll horizontally on small screens">
+          <table><caption>Selected baselines from the main comparison in the paper. ↑ Higher is better; ↓ lower is better.</caption><thead><tr><th scope="col">Model / agent</th><th scope="col">PSR ↑</th><th scope="col">TSA ↑</th><th scope="col">AEM ↑</th><th scope="col">Hallucination ↓</th></tr></thead><tbody>
+            <tr><th scope="row">Qwen-2.5-7B-Instruct</th><td>46.2</td><td>62.5</td><td>39.8</td><td>12.1</td></tr>
+            <tr><th scope="row">Qwen-2.5-72B-Instruct</th><td>74.6</td><td>82.4</td><td>62.8</td><td>2.7</td></tr>
+            <tr><th scope="row">DeepSeek-R1</th><td>77.5</td><td>85.8</td><td>68.1</td><td>2.8</td></tr>
+            <tr><th scope="row">GPT-5</th><td>83.8</td><td>90.6</td><td>74.5</td><td>0.6</td></tr>
+            <tr><th scope="row">Gemini-3-Flash</th><td>84.1</td><td>91.2</td><td>75.8</td><td>0.9</td></tr>
+            <tr><th scope="row">AFlow (GPT-4)</th><td>79.2</td><td>87.6</td><td>68.4</td><td>1.1</td></tr>
+            <tr><th scope="row">EarthAgent (GPT-4)</th><td>86.2</td><td>91.8</td><td>76.8</td><td>0.7</td></tr>
+            <tr><th scope="row">CangLing-KnowFlow (GPT-4)</th><td>87.5</td><td>92.1</td><td>77.2</td><td>0.8</td></tr>
+            <tr class="ours"><th scope="row">SimCRAFT-Qwen2.5-7B <span>Ours</span></th><td>83.2</td><td>93.5</td><td>79.6</td><td>0.5</td></tr>
+          </tbody></table>
+        </div>
+      </section>
+      <section class="result-panel" id="knowflow-results" aria-labelledby="knowflow-heading">
+        <h3 id="knowflow-heading">KnowFlow-Bench · 324 expert-annotated tasks</h3>
+        <p>No additional fine-tuning on this benchmark. SimCRAFT improves PSR by 29.2 percentage points over Qwen-2.5-7B with inference-time RAG.</p>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="KnowFlow-Bench results table">
+          <table><caption>Zero-fine-tuning evaluation on KnowFlow-Bench. ↑ Higher is better.</caption><thead><tr><th scope="col">Model / agent</th><th scope="col">PSR ↑</th><th scope="col">AEM ↑</th></tr></thead><tbody>
+            <tr><th scope="row">Llama-3-8B + Inf-RAG</th><td>46.3</td><td>51.2</td></tr>
+            <tr><th scope="row">Mistral-7B + Inf-RAG</th><td>47.8</td><td>53.5</td></tr>
+            <tr><th scope="row">Qwen-2.5-7B + Inf-RAG</th><td>50.2</td><td>55.1</td></tr>
+            <tr><th scope="row">Vanilla SFT-Qwen2.5-7B</th><td>62.8</td><td>65.4</td></tr>
+            <tr class="ours"><th scope="row">SimCRAFT-Qwen2.5-7B <span>Ours</span></th><td>79.4</td><td>75.2</td></tr>
+            <tr><th scope="row">GPT-4 + Inf-RAG</th><td>82.6</td><td>78.3</td></tr>
+            <tr><th scope="row">CangLing-KnowFlow (GPT-4)</th><td>83.7</td><td>80.1</td></tr>
+          </tbody></table>
+        </div>
+      </section>
+      <section class="result-panel" id="thinkgeo-results" aria-labelledby="thinkgeo-heading">
+        <h3 id="thinkgeo-heading">ThinkGeo · 486 tasks, 14 tools</h3>
+        <p>Evaluation on an independently sourced benchmark with 1,778 expert-verified steps. SimCRAFT uses the benchmark tool space and its standard SOP retrieval pipeline without additional fine-tuning.</p>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="ThinkGeo results table">
+          <table><caption>Scored against ThinkGeo expert references using the evaluation protocol in the paper. ↑ Higher is better; ↓ lower is better.</caption><thead><tr><th scope="col">Model</th><th scope="col">PSR ↑</th><th scope="col">TSA ↑</th><th scope="col">AEM ↑</th><th scope="col">Hallucination ↓</th></tr></thead><tbody>
+            <tr><th scope="row">GPT-4 (reference)</th><td>61.8</td><td>67.4</td><td>34.9</td><td>2.3</td></tr>
+            <tr><th scope="row">Qwen-2.5-7B (zero-shot)</th><td>29.5</td><td>51.0</td><td>20.1</td><td>18.6</td></tr>
+            <tr><th scope="row">Llama-3-8B (zero-shot)</th><td>24.8</td><td>37.3</td><td>13.7</td><td>22.4</td></tr>
+            <tr class="ours"><th scope="row">SimCRAFT-Qwen2.5-7B <span>Ours</span></th><td>58.3</td><td>66.5</td><td>32.8</td><td>3.9</td></tr>
+          </tbody></table>
+        </div>
+      </section>
+      <p class="metric-note"><abbr title="Planning Success Rate">PSR</abbr>: Planning Success Rate · <abbr title="Tool Selection Accuracy">TSA</abbr>: Tool Selection Accuracy · <abbr title="Argument Exact Match">AEM</abbr>: Argument Exact Match. These metrics assess workflow planning, not the accuracy of downstream maps or geospatial products.</p>
+      <figure class="paper-figure ablation-figure">
+        <a class="figure-link" href="assets/backbone-ablation.png" target="_blank" rel="noopener noreferrer" aria-label="Open the backbone ablation figure at full size"><img src="assets/backbone-ablation.png" width="2000" height="539" alt="Planning success across Qwen2.5-7B, Llama-3-8B, and Mistral-7B under zero-shot, inference-time RAG, supervised fine-tuning, and CRAFT training." loading="lazy" decoding="async"></a>
+        <figcaption>CRAFT improves planning success over vanilla SFT by 9.6–11.6 percentage points across the three evaluated backbones. An additional Qwen3-8B experiment in the paper reaches 84.7% PSR.</figcaption>
+      </figure>
+    </section>
+
+    <section class="section citation-section" id="citation" aria-labelledby="citation-title">
+      <div class="section-heading horizontal"><div><p class="eyebrow">05 / Citation</p><h2 id="citation-title">Build on SimCRAFT.</h2></div><div class="citation-actions"><a href="citation.bib" download>Download .bib</a><button class="button" id="copy-citation" type="button" hidden>Copy BibTeX</button></div></div>
+      <p>Accepted to EMNLP 2026 Main Conference.</p>
+      <pre tabindex="0" aria-label="BibTeX citation"><code id="bibtex">@inproceedings{wang2026simcraft,
+  title = {{SimCRAFT}: Distilling Remote Sensing Agents via Synthetic Trajectories and Contextual Retrieval-Augmented Fine-Tuning},
+  author = {Wang, Haoran and Yao, Jing and Yang, Xu and Wang, Zeqing and Zhang, Yang and Ghamisi, Pedram and Chen, Zhengchao},
+  booktitle = {Proceedings of the 2026 Conference on Empirical Methods in Natural Language Processing},
+  year = {2026},
+  note = {Accepted, Main Conference},
+  eprint = {2608.30277},
+  archivePrefix = {arXiv},
+  url = {https://arxiv.org/abs/2608.30277}
+}</code></pre>
+      <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+  <footer><a class="brand" href="../">CangLing-Agent</a><p>Remote sensing · Procedural knowledge · Compact agents</p><a href="../KnowFlow/">Explore KnowFlow <span aria-hidden="true">↗</span></a></footer>
+</body>
+</html>
